@@ -1,16 +1,22 @@
+import { useDispatch } from "react-redux";
 function Contact({ contact, setFavorite }) {
-  const name = contact?.user || "Contatto 1";
-  const phone = contact?.number || "1234567890";
+  const dispatch = useDispatch();
+  // const name = contact?.user;
+  // const phone = contact?.number; 
 
-  function sendContactFavorite() {
-    setFavorite((prev) => [...prev, contact]);
+  function sendContactFavorite(contact) {
+    console.log("id", contact);
+    dispatch({ type: "favoriteId", payload: contact });
+    
   }
 
   return (
     <div>
-      <h2>{name}</h2>
-      <div>{phone}</div>
+      
+      <h2>{contact?.user}</h2>
+      <div>{contact?.number}</div>
       <div onClick={() => sendContactFavorite(contact)}>x</div>
+      {/* <button onClick={() => setDeletedContact(contact.number)}>Delete</button> */}
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 // import { FaAddressBook } from "react-icons/fa";
 // import { BsStarFill } from "react-icons/bs";
 
-function NavBar() {
+function NavBar({ inputValue, setInputValue }) {
   return (
     <nav>
       <ul>
@@ -19,6 +19,15 @@ function NavBar() {
           </Link>
         </li>
       </ul>
+      <form>
+        <input
+          type="text"
+          id="search"
+          placeholder="Cerca contatto"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        />
+      </form>
     </nav>
   );
 }

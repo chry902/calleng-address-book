@@ -3,16 +3,17 @@ import AddContact from "../../components/AddCotact/AddContact";
 import ContactsList from "../../components/ContactsList/contactsList";
 import NavBar from "../../components/NavBar/NavBar";
 
-function Home({ setFavorite }) {
-  const [arrContacts, setArrContacts] = useState([]);
-  console.log("new arr--->", arrContacts);
-
+function Home({ setFavorite, arrContacts, setArrContacts }) {
+  const [inputValue, setInputValue] = useState("");
+  
   return (
     <>
-      <NavBar />
+      <NavBar inputValue={inputValue} setInputValue={setInputValue} />
+      <ContactsList
+        inputValue={inputValue}
+      />
       <main>
-        <ContactsList arrContacts={arrContacts} setFavorite={setFavorite} />
-        <AddContact setArrContacts={setArrContacts} />
+        <AddContact />
       </main>
     </>
   );

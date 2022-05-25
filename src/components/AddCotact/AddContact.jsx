@@ -1,12 +1,19 @@
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 
-function AddContact({ setArrContacts }) {
+function AddContact() {
+  const dispatch = useDispatch();
   const [user, setUser] = useState("");
   const [number, setNumber] = useState("");
 
   const addContact = (e) => {
     e.preventDefault();
-    setArrContacts((prev) => [...prev, { user, number }]);
+    // setArrContacts([...arrContacts, { user, number }]);
+    dispatch({
+      type: "addContact", payload: {
+        user,
+        number,
+    }})
   };
 
   return (
@@ -30,7 +37,7 @@ function AddContact({ setArrContacts }) {
           onChange={(e) => setNumber(e.target.value)}
         />
 
-        <input type="submit" value="Invia" />
+        <input type="submit" value="Aggiungi" />
       </form>
     </div>
   );
